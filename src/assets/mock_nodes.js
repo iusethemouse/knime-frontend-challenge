@@ -14,8 +14,7 @@ const allNodes = [
       type: "Source",
       color: "#c6d157",
       // icon: "dummy_node.png",
-      // icon: dummyNodeIcon,
-      icon: "https://github.com/iusethemouse/images/blob/main/mock_nodes/case_switch_start.png"
+      icon: dummyNodeIcon,
     },
     {
       id: 1,
