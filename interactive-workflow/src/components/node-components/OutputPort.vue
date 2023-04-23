@@ -2,9 +2,7 @@
   <div class="output"></div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <style scoped>
 .output {

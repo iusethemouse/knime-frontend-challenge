@@ -16,29 +16,18 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup>
+import { ref } from "vue";
 import SearchField from "./SearchField.vue";
 import NodeObject from "./NodeObject.vue";
 
-export default defineComponent({
-  name: "MainCanvas",
-  components: {
-    SearchField,
-    NodeObject,
-  },
-  setup() {
-    const nodes = ref([]);
+const nodes = ref([]);
 
-    const addNodeFromSearch = (nodeObject) => {
-      const x = 100;
-      const y = 100;
-      nodes.value.push({ nodeObject, x, y });
-    };
-
-    return { nodes, addNodeFromSearch };
-  },
-});
+const addNodeFromSearch = (nodeObject) => {
+  const x = 100;
+  const y = 100;
+  nodes.value.push({ nodeObject, x, y });
+};
 </script>
 
 <style scoped>

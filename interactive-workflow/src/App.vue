@@ -1,19 +1,11 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
-import MainCanvas from './components/MainCanvas.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    MainCanvas,
-  }
-});
-</script>
-
 <template>
   <h1>Interactive Workflow Demo</h1>
   <MainCanvas />
 </template>
+
+<script setup>
+import MainCanvas from "./components/MainCanvas.vue";
+</script>
 
 <style>
 #app {
