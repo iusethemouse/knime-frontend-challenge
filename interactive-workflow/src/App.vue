@@ -1,0 +1,26 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import MainCanvas from './components/MainCanvas.vue';
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    MainCanvas,
+  }
+});
+</script>
+
+<template>
+  <h1>Interactive Workflow Demo</h1>
+  <MainCanvas />
+</template>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
