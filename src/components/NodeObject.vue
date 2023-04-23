@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, computed, defineProps } from "vue";
+import { onMounted, ref, computed } from "vue";
 import interact from "interactjs";
 import InputPort from "./node-components/InputPort.vue";
 import OutputPort from "./node-components/OutputPort.vue";
@@ -66,7 +66,7 @@ const screenY = ref(props.initialY);
 const draggableNode = ref(null);
 
 const iconPath = computed(() => {
-  return require(`../assets/${props.icon}`);
+  return new URL(`../assets/${props.icon}`, import.meta.url).href;
 });
 
 const initInteract = (selector) => {
