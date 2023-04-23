@@ -7,7 +7,7 @@
           <InputPort v-for="(input, index) in numInputs" :key="index" />
         </div>
         <div class="node-body" :style="{ backgroundColor: color }">
-          <img :src="iconPath" alt="Node icon" class="node-icon" />
+          <img :src="icon" alt="Node icon" class="node-icon" />
         </div>
         <div class="outputs">
           <OutputPort v-for="(output, index) in numOutputs" :key="index" />
@@ -64,10 +64,6 @@ const props = defineProps({
 const screenX = ref(props.initialX);
 const screenY = ref(props.initialY);
 const draggableNode = ref(null);
-
-const iconPath = computed(() => {
-  return new URL(`../assets/${props.icon}`, import.meta.url).href;
-});
 
 const initInteract = (selector) => {
   interact(selector.querySelector(".node-body")).draggable({

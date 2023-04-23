@@ -1,23 +1,21 @@
 <template>
-  <div class="search-field">
-    <div class="input-container">
-      <input
-        class="search-input"
-        type="text"
-        v-model="searchText"
-        @input="updateSuggestions"
-        placeholder="Add new node..."
-      />
-      <ul v-if="suggestions.length" class="suggestion-list">
-        <li
-          v-for="(suggestion, index) in suggestions"
-          :key="index"
-          @click="selectSuggestion(index)"
-        >
-          {{ suggestion.name }}
-        </li>
-      </ul>
-    </div>
+  <div class="input-container">
+    <input
+      class="search-input"
+      type="text"
+      v-model="searchText"
+      @input="updateSuggestions"
+      placeholder="Add new node..."
+    />
+    <ul v-if="suggestions.length" class="suggestion-list">
+      <li
+        v-for="(suggestion, index) in suggestions"
+        :key="index"
+        @click="selectSuggestion(index)"
+      >
+        {{ suggestion.name }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -53,17 +51,15 @@ const selectSuggestion = (index = -1) => {
 </script>
 
 <style scoped>
-.search-field {
-  margin: 20px;
-}
-
 .input-container {
   position: relative;
   display: inline-block;
+  margin: 20px;
+  width: 60%; /* relative to the parent div inside the MainCanvas component */
 }
 
 .search-input {
-  width: 400px;
+  width: 100%; /* relative to the input-container div */
   padding: 10px;
   border: 3px solid #000000;
   border-radius: 2px;
