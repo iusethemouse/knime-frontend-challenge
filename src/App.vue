@@ -1,5 +1,5 @@
 <template>
-  <h1>Interactive Workflow Demo</h1>
+  <!-- <h1>Interactive Workflow Demo</h1> -->
   <MainCanvas />
 </template>
 

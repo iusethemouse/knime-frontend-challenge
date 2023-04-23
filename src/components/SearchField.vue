@@ -2,6 +2,7 @@
   <div class="search-field">
     <div class="input-container">
       <input
+        class="search-input"
         type="text"
         v-model="searchText"
         @input="updateSuggestions"
@@ -21,93 +22,87 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup>
+import { ref, defineEmits } from "vue";
+import allNodes from "../assets/mock_nodes.js";
 
-export default defineComponent({
-  name: "SearchField",
-  setup(props, { emit }) {
-    const searchText = ref("");
-    const suggestions = ref([]);
-    const allNodes = [
-      {
-        id: 0,
-        name: "Dummy Node",
-        numInputs: 1,
-        numOutputs: 1,
-        type: "Source",
-        color: "#c6d157",
-        icon: "dummy_node.png",
-      },
-      {
-        id: 1,
-        name: "Data Generator",
-        numInputs: 0,
-        numOutputs: 2,
-        type: "Source",
-        color: "#f19a4a",
-        icon: "data_generator.png",
-      },
-      {
-        id: 2,
-        name: "CASE Switch Data (Start)",
-        numInputs: 1,
-        numOutputs: 3,
-        type: "Manipulator",
-        color: "#f9da49",
-        icon: "case_switch_start.png",
-      },
-      {
-        id: 3,
-        name: "Cluster Assigner",
-        numInputs: 1,
-        numOutputs: 1,
-        type: "Predictor",
-        color: "#60b259",
-        icon: "cluster_assigner.png",
-      },
-      {
-        id: 4,
-        name: "Cell Extractor",
-        numInputs: 1,
-        numOutputs: 1,
-        type: "Manipulator",
-        color: "#f9da49",
-        icon: "cell_extractor.png",
-      },
-    ];
+const emit = defineEmits(["add-node"]);
+const searchText = ref("");
+const suggestions = ref([]);
+// const allNodes = [
+//   {
+//     id: 0,
+//     name: "Dummy Node",
+//     numInputs: 1,
+//     numOutputs: 1,
+//     type: "Source",
+//     color: "#c6d157",
+//     icon: "dummy_node.png",
+//   },
+//   {
+//     id: 1,
+//     name: "Data Generator",
+//     numInputs: 0,
+//     numOutputs: 2,
+//     type: "Source",
+//     color: "#f19a4a",
+//     icon: "data_generator.png",
+//   },
+//   {
+//     id: 2,
+//     name: "CASE Switch Data (Start)",
+//     numInputs: 1,
+//     numOutputs: 3,
+//     type: "Manipulator",
+//     color: "#f9da49",
+//     icon: "case_switch_start.png",
+//   },
+//   {
+//     id: 3,
+//     name: "Cluster Assigner",
+//     numInputs: 1,
+//     numOutputs: 1,
+//     type: "Predictor",
+//     color: "#60b259",
+//     icon: "cluster_assigner.png",
+//   },
+//   {
+//     id: 4,
+//     name: "Cell Extractor",
+//     numInputs: 1,
+//     numOutputs: 1,
+//     type: "Manipulator",
+//     color: "#f9da49",
+//     icon: "cell_extractor.png",
+//   },
+// ];
 
-    const updateSuggestions = () => {
-      suggestions.value = allNodes.filter((node) =>
-        node.name.toLowerCase().includes(searchText.value.toLowerCase())
-      );
-    };
+const updateSuggestions = () => {
+  suggestions.value = allNodes.filter((node) =>
+    node.name.toLowerCase().includes(searchText.value.toLowerCase())
+  );
+};
 
-    const selectSuggestion = (index = -1) => {
-      if (index < 0) {
-        index = suggestions.value.findIndex(
-          (suggestion) =>
-            suggestion.toLowerCase() === searchText.value.toLowerCase()
-        );
-      }
+const selectSuggestion = (index = -1) => {
+  if (index < 0) {
+    index = suggestions.value.findIndex(
+      (suggestion) =>
+        suggestion.toLowerCase() === searchText.value.toLowerCase()
+    );
+  }
 
-      if (index >= 0) {
-        const selectedNode = suggestions.value[index];
-        searchText.value = "";
-        suggestions.value = [];
-        // Emit the event with the selected node
-        emit("add-node", selectedNode);
-      }
-    };
-
-    return { searchText, suggestions, updateSuggestions, selectSuggestion };
-  },
-});
+  if (index >= 0) {
+    const selectedNode = suggestions.value[index];
+    searchText.value = "";
+    suggestions.value = [];
+    emit("add-node", selectedNode);
+  }
+};
 </script>
 
 <style scoped>
 .search-field {
-  margin: 10px;
+  margin: 20px;
 }
 
 .input-container {
@@ -115,8 +110,12 @@ export default defineComponent({
   display: inline-block;
 }
 
-input {
-  width: 200px;
+.search-input {
+  width: 400px;
+  padding: 10px;
+  border: 3px solid #000000;
+  border-radius: 2px;
+  box-sizing: border-box;
 }
 
 .suggestion-list {

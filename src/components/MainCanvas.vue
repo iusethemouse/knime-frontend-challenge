@@ -32,12 +32,10 @@ const addNodeFromSearch = (nodeObject) => {
 
 <style scoped>
 .main-canvas {
-  border: 1px solid black;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 50px;
+  border: 10px solid #f9d949;
+  margin: 50px;
   height: calc(100vh - 150px);
-  width: calc(100vw - 100px);
+  width: calc(100vw - 150px);
   position: relative;
 }
 </style>
