@@ -151,8 +151,7 @@ onMounted(() => {
 }
 
 .node-status,
-.node-type,
-.node-icon {
+.node-type {
   margin: 0;
   margin-top: 5px;
 }
